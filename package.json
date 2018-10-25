@@ -1,0 +1,13 @@
+{
+  "name": "@vue-storefront/extension-instagram-feed",
+  "version": "1.0.0",
+  "description": "Instagram feed for Vue Storefront",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
