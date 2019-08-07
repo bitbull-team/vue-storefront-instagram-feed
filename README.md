@@ -18,7 +18,7 @@ Configure widget in your config/local.json
 
 ## For Vue StoreFront 1.9
 
-Since extensions will be soon deprecate, we now use this widget as a module.
+Since extensions will be soon deprecated, we now use this widget as a module.
 Register the module in your **modules/index.ts** file
  
 ``` 
