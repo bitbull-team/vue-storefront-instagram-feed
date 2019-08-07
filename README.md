@@ -1,8 +1,8 @@
 # Instagram Feed for Vue storefront
 
-Extension for [Vue storefront](https://github.com/DivanteLtd/vue-storefront) that displays last photos from an Instagram account.
+Module for [Vue storefront](https://github.com/DivanteLtd/vue-storefront) that displays last photos from an Instagram account.
 
-#### Usage
+## Configuration
 
 Configure widget in your config/local.json
 
@@ -15,7 +15,47 @@ Configure widget in your config/local.json
 
 ```
 
-Include component in the desired page or component
+
+## For Vue StoreFront 1.9
+
+Since extensions will be soon deprecate, we now use this widget as a module.
+Register the module in your **modules/index.ts** file
+ 
+``` 
+  ...
+  import { InstagramFeed } from './extension-instagram-feed' 
+  ....
+
+  export const registerModules: VueStorefrontModule[] = [
+    ...
+    InstagramFeed
+  ]
+
+``` 
+
+Include component in the desired page or component.
+
+```
+  import instagramStream from 'src/modules/extension-instagram-feed/components/stream'
+```
+
+```
+  components: {
+    ...
+    instagramStream
+  }
+  
+```  
+
+```  
+ <instagram-stream />
+```  
+
+
+## For previous versions of Vue StoreFront (< 1.9)
+*NB: Please use this widget [release 1.0.0](https://github.com/bitbull-team/vue-storefront-instagram-feed/releases/tag/1.0.0)*
+
+Include component in the desired page or component.
 
 ```
   import instagramStream from 'src/extensions/instagram-feed/components/stream'
@@ -31,11 +71,11 @@ Include component in the desired page or component
 
 ```  
  <instagram-stream />
- ```  
+```  
  
  Register the extension 
  
- ``` 
+``` 
    extensionList.push(require('@vue-storefront/extension-instagram-feed/index.js'))
 ``` 
 

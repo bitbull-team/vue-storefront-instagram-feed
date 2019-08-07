@@ -14,7 +14,6 @@
 
 <script>
 import config from 'config'
-import {mapActions, mapGetters} from 'vuex'
 export default {
   data () {
     return {
@@ -23,24 +22,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({
-      getInstagramFeed: 'getInstagramFeed'
-    }),
     isConfigured () {
       return !!config.instagram
     },
     feed () {
-      return this.$store.getters.getInstagramFeed
+      return this.$store.getters['instagram-stream/getInstagramFeed']
     }
-  },
-  methods: {
-    ...mapActions({
-      updateInstagramPhotos: 'updateInstagramPhotos'
-    })
   },
   created () {
     if (this.isConfigured) {
-      this.updateInstagramPhotos(config.instagram.token)
+      this.$store.dispatch('instagram-stream/updateInstagramPhotos')
     }
   }
 }
@@ -51,6 +42,7 @@ export default {
     position: relative;
     overflow: hidden;
   }
+
   .inner {
     width: 100%;
     height: 100%;
@@ -58,20 +50,25 @@ export default {
     cursor: pointer;
     background-size: cover;
     display: block;
+
     &:hover {
       opacity: 0.7;
     }
   }
+
   .instagram {
     $margin-left: 1%;
     margin: 0 auto;
+
     .image {
       display: inline-block;
       max-width: 300px;
       width: (100%-($margin-left*2))/3;
+
       + .image {
         margin-left: $margin-left;
       }
+
       img {
         width: 100%;
         height: auto;
